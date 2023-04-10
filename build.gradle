@@ -1,0 +1,84 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name 'Forge'
+            url 'https://maven.minecraftforge.net'
+        }
+    }
+    dependencies {
+        classpath 'com.anatawa12.forge:ForgeGradle:2.3-1.0.7'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+// Add version to the jar name
+version project.version
+
+minecraft {
+    version = '1.12.2-14.23.5.2847'
+    mappings = 'stable_39'
+    runDir = 'run'
+
+    replace('@ID@', project.id)
+    replace('@NAME@', project.name)
+    replace('@VERSION@', project.version)
+    replaceIn('ModReference.java')
+}
+
+runClient {
+    args '--username=Dev'
+}
+
+// Replace id, name, and version in `mcmod.info`
+processResources {
+    duplicatesStrategy 'include'
+
+    inputs.property 'id', project.id
+    inputs.property 'name', project.name
+    inputs.property 'version', project.version
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'id': project.id, 'name': project.name, 'version': project.version
+    }
+
+    from ('src/main/java') {
+        include '**/*.png'
+
+        include '**/*.json'
+
+        include '**/*.vsh'
+
+        include '**/*.fsh'
+    }
+}
+
+// Create configuration to include embedded dependencies into the jar
+configurations {
+    implementation
+    compile.extendsFrom(embed)
+}
+
+repositories {
+    ivy {
+        url 'https://github.com/'
+
+        patternLayout { artifact '[organisation]/[module]/releases/download/[revision]/[module]-[revision].[ext]' }
+
+        metadataSources { artifact() }
+    }
+}
+
+dependencies {
+    implementation 'Red-Studio-Ragnarok:Red-Core:0.2-Dev-2@jar'
+
+    implementation 'net.jafama:jafama:2.+'
+    embed 'net.jafama:jafama:2.+'
+}
+
+idea {
+    module {
+        excludeDirs = [file(".github"), file(".gradle"), file(".idea"), file("build"), file("gradle"), file("run")]
+    }
+}
