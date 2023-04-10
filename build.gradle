@@ -42,16 +42,6 @@ processResources {
         include 'mcmod.info'
         expand 'id': project.id, 'name': project.name, 'version': project.version
     }
-
-    from ('src/main/java') {
-        include '**/*.png'
-
-        include '**/*.json'
-
-        include '**/*.vsh'
-
-        include '**/*.fsh'
-    }
 }
 
 // Create configuration to include embedded dependencies into the jar
@@ -71,10 +61,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'Red-Studio-Ragnarok:Red-Core:0.2-Dev-2@jar'
-
     implementation 'net.jafama:jafama:2.+'
     embed 'net.jafama:jafama:2.+'
+}
+
+jar {
+    // Add all embedded dependencies into the jar
+    from(configurations.embed.collect {it.isDirectory() ? it : zipTree(it)})
 }
 
 idea {
