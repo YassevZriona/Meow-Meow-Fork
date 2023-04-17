@@ -14,10 +14,10 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
-group = 'com.paneedah'
+group = 'com.paneedah.mwc'
 
 java {
-    archivesBaseName = 'mwc'
+    archivesBaseName = 'ModernWarfare'
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
@@ -64,10 +64,6 @@ mixin {
 
     config "mwc.mixins.json"
 }
-
-sourceSets.main.resources { srcDir 'src/generated/resources' }
-
-repositories {}
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.4-45.0.43'
