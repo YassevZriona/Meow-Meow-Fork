@@ -29,7 +29,28 @@ public class ModernWarfare {
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
         if(event.getTab() == CreativeTabsRegistry.BaseTab) {
-            event.accept(MainRegistry.URANIUM_INGOT);
+            event.accept(MainRegistry.GUNMETAL_COMPOSITE);
+            event.accept(MainRegistry.GUNMETAL_INGOT);
+            event.accept(MainRegistry.GUNMETAL_PLATE);
+            event.accept(MainRegistry.LEAD_INGOT);
+            event.accept(MainRegistry.LEAD_ORE);
+            event.accept(MainRegistry.LEAD_RAW);
+            event.accept(MainRegistry.STEEL_DUST);
+            event.accept(MainRegistry.STEEL_INGOT);
+            event.accept(MainRegistry.SULFUR_DUST);
+            event.accept(MainRegistry.SULFUR_ORE);
+            event.accept(MainRegistry.SULFUR_RAW);
+            event.accept(MainRegistry.SYNTHETIC_PLASTIC);
+            event.accept(MainRegistry.SYNTHETIC_POLYMER_COMPOSITE);
+            event.accept(MainRegistry.TIN_INGOT);
+            event.accept(MainRegistry.TIN_ORE);
+            event.accept(MainRegistry.TIN_RAW);
+            event.accept(MainRegistry.ALUMINUM_ORE);
+            event.accept(MainRegistry.RUBY_ORE);
+            event.accept(MainRegistry.SILICON_ORE);
+            event.accept(MainRegistry.TITANIUM_ORE);
+            event.accept(MainRegistry.ALUMINUM_RAW);
+            event.accept(MainRegistry.ALUMINUM_INGOT);
         }
     }
 
