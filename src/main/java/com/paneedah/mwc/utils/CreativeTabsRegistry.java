@@ -16,10 +16,10 @@ public class CreativeTabsRegistry {
     public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event) {
         BaseTab = event.registerCreativeModeTab(new ResourceLocation("mwc", "basetab"), builder -> {
             builder.title(Component.translatable("itemGroup.mwc.basetab"))
-                    .icon(() -> new ItemStack(MainRegistry.GUNMETAL_PLATE.get()));
+                    .icon(() -> new ItemStack(ModRegistry.GUNMETAL_PLATE.get()));
             builder.withSearchBar();
             builder.displayItems((flags, output) -> {
-                MainRegistry.ITEMS.getEntries().forEach(registryObject -> output.accept(registryObject.get()));
+                ModRegistry.ITEMS.getEntries().forEach(registryObject -> output.accept(registryObject.get()));
             });
         });
     }

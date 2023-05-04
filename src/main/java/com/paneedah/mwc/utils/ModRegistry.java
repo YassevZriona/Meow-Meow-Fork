@@ -16,7 +16,7 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(modid = "mwc", bus = Mod.EventBusSubscriber.Bus.MOD)
-public class MainRegistry {
+public class ModRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, "mwc");
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, "mwc");
 
@@ -41,6 +41,9 @@ public class MainRegistry {
 
 
     // Blocks
+
+
+    // Ores
 
     public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
@@ -82,7 +85,12 @@ public class MainRegistry {
 
     // Recipes
 
+    public static void setItems() {
+
+    }
+
     public static void register(IEventBus eventBus) {
+        setItems();
         ITEMS.register(eventBus);
         BLOCKS.register(eventBus);
     }
