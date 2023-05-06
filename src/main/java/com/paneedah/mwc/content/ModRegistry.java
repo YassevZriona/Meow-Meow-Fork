@@ -1,10 +1,14 @@
-package com.paneedah.mwc.things;
+package com.paneedah.mwc.content;
 
 import com.paneedah.mwc.ModernWarfare;
-import com.paneedah.mwc.things.items.SyringeBase;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -72,8 +76,8 @@ public class ModRegistry {
     public static final RegistryObject<Item> SYNTHETIC_POLYMER_COMPOSITE = ITEMS.register("synthetic_polymer_composite", () -> new Item(new Item.Properties()));
 
     // Tools
-    public static final RegistryObject<Item> STIMPAK = ITEMS.register("stimpak", () -> new SyringeBase(new Item.Properties()));
-    public static final RegistryObject<Item> EMPTY_SYRINGE = ITEMS.register("empty_syringe", () -> new SyringeBase(new Item.Properties()));
+    public static final RegistryObject<Item> STIMPAK = ITEMS.register("stimpak", () -> new ModRegistry.SyringeBase(new Item.Properties()));
+    public static final RegistryObject<Item> EMPTY_SYRINGE = ITEMS.register("empty_syringe", () -> new ModRegistry.SyringeBase(new Item.Properties()));
 
     // -------------------------------------------BLOCKS-------------------------------------------
 
@@ -117,5 +121,26 @@ public class ModRegistry {
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
         ITEMS.register(eventBus);
+    }
+
+    public static class SyringeBase extends Item {
+        public SyringeBase(Properties properties) {
+            super(properties);
+            properties.stacksTo(16);
+        }
+        @Override
+        public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+            if(this == ModRegistry.STIMPAK.get()) {
+                if(hand == InteractionHand.MAIN_HAND) {
+                    player.heal(5);
+                    player.getCooldowns().addCooldown(this, 15);
+                    player.getMainHandItem().shrink(1);
+                    if (!player.getInventory().add(new ItemStack(ModRegistry.EMPTY_SYRINGE.get()))) {
+                        player.drop(new ItemStack(ModRegistry.EMPTY_SYRINGE.get(), 1), false);
+                    }
+                }
+            }
+            return super.use(level,player,hand);
+        }
     }
 }

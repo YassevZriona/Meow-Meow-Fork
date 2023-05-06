@@ -1,6 +1,6 @@
-package com.paneedah.mwc.datagen;
+package com.paneedah.mwc.datahandling;
 
-import com.paneedah.mwc.things.ModRegistry;
+import com.paneedah.mwc.content.ModRegistry;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;

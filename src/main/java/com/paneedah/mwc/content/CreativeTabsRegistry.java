@@ -1,4 +1,4 @@
-package com.paneedah.mwc.things;
+package com.paneedah.mwc.content;
 
 import com.paneedah.mwc.ModernWarfare;
 import net.minecraft.network.chat.Component;

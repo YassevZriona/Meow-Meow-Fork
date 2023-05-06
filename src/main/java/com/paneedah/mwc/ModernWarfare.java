@@ -1,7 +1,7 @@
 package com.paneedah.mwc;
 
-import com.paneedah.mwc.things.ModRegistry;
-import com.paneedah.mwc.things.CreativeTabsRegistry;
+import com.paneedah.mwc.content.ModRegistry;
+import com.paneedah.mwc.content.CreativeTabsRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -95,6 +95,7 @@ public class ModernWarfare {
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModEvents {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {}
+        public static void onClientSetup(FMLClientSetupEvent event) {
+        }
     }
 }
