@@ -5,8 +5,11 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -40,7 +43,7 @@ public class RecipeRegistry extends RecipeProvider implements IConditionBuilder 
     }
 
     private void furnaceGeneric(Consumer<FinishedRecipe> consumer, RegistryObject<Item> input, RegistryObject<Item> output, Float exp, int time, String group) {
-        SimpleCookingRecipeBuilder.generic(Ingredient.of(input.get()), RecipeCategory.MISC, output.get(), exp, time, RecipeSerializer.SMELTING_RECIPE)
+        SimpleCookingRecipeBuilder.generic(Ingredient.of(input.get()), RecipeCategory.MISC, output.get(), exp, 200, RecipeSerializer.SMELTING_RECIPE)
                 .group(group).unlockedBy(getHasName(input.get()), has(input.get())).save(consumer, new ResourceLocation(ModernWarfare.MODID, getItemName(output.get())) + "_from_smelting_" + getItemName(input.get()));
     }
 
