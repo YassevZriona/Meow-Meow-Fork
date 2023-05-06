@@ -26,9 +26,14 @@ public class ModRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ModernWarfare.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ModernWarfare.MODID);
 
-    // -------------------------------------------ITEMS-------------------------------------------
+    // ██╗████████╗███████╗███╗   ███╗███████╗
+    // ██║╚══██╔══╝██╔════╝████╗ ████║██╔════╝
+    // ██║   ██║   █████╗  ██╔████╔██║███████╗
+    // ██║   ██║   ██╔══╝  ██║╚██╔╝██║╚════██║
+    // ██║   ██║   ███████╗██║ ╚═╝ ██║███████║
+    // ╚═╝   ╚═╝   ╚══════╝╚═╝     ╚═╝╚══════╝
 
-    // Ingots
+    // -------------------------------------------INGOTS-------------------------------------------
     public static final RegistryObject<Item> GUNMETAL_INGOT = ITEMS.register("gunmetal_alloy", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LEAD_INGOT = ITEMS.register("lead_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot", () -> new Item(new Item.Properties()));
@@ -38,7 +43,7 @@ public class ModRegistry {
     public static final RegistryObject<Item> URANIUM_INGOT = ITEMS.register("uranium_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> OBSENUM_INGOT = ITEMS.register("obsenum_ingot", () -> new Item(new Item.Properties()));
 
-    // Nuggets
+    // -------------------------------------------NUGGETS-------------------------------------------
     public static final RegistryObject<Item> GUNMETAL_NUGGET = ITEMS.register("gunmetal_nugget", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LEAD_NUGGET = ITEMS.register("lead_nugget", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget", () -> new Item(new Item.Properties()));
@@ -48,7 +53,7 @@ public class ModRegistry {
     public static final RegistryObject<Item> URANIUM_NUGGET = ITEMS.register("uranium_nugget", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> OBSENUM_NUGGET = ITEMS.register("obsenum_nugget", () -> new Item(new Item.Properties()));
 
-    // Plates
+    // -------------------------------------------PLATES-------------------------------------------
     public static final RegistryObject<Item> GUNMETAL_PLATE = ITEMS.register("gunmetal_plate", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LEAD_PLATE = ITEMS.register("lead_plate", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STEEL_PLATE = ITEMS.register("steel_plate", () -> new Item(new Item.Properties()));
@@ -58,7 +63,7 @@ public class ModRegistry {
     public static final RegistryObject<Item> URANIUM_PLATE = ITEMS.register("uranium_plate", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> OBSENUM_PLATE = ITEMS.register("obsenum_plate", () -> new Item(new Item.Properties()));
 
-    // Raws
+    // -------------------------------------------RAW-------------------------------------------
     public static final RegistryObject<Item> RAW_LEAD = ITEMS.register("raw_lead", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_ALUMINUM = ITEMS.register("raw_aluminum", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_TITANIUM = ITEMS.register("raw_titanium", () -> new Item(new Item.Properties()));
@@ -66,7 +71,7 @@ public class ModRegistry {
     public static final RegistryObject<Item> RAW_URANIUM = ITEMS.register("raw_uranium", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RAW_POTASSIUM = ITEMS.register("raw_potassium", () -> new Item(new Item.Properties()));
 
-    // Other
+    // -------------------------------------------OTHER-------------------------------------------
     public static final RegistryObject<Item> SULFUR = ITEMS.register("sulfur", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SALT_PETER = ITEMS.register("salt_peter", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GRAPHITE = ITEMS.register("graphite", () -> new Item(new Item.Properties()));
@@ -75,13 +80,18 @@ public class ModRegistry {
     public static final RegistryObject<Item> SYNTHETIC_PLASTIC = ITEMS.register("synthetic_plastic", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SYNTHETIC_POLYMER_COMPOSITE = ITEMS.register("synthetic_polymer_composite", () -> new Item(new Item.Properties()));
 
-    // Tools
+    // -------------------------------------------TOOLS-------------------------------------------
     public static final RegistryObject<Item> STIMPAK = ITEMS.register("stimpak", () -> new ModRegistry.SyringeBase(new Item.Properties()));
     public static final RegistryObject<Item> EMPTY_SYRINGE = ITEMS.register("empty_syringe", () -> new ModRegistry.SyringeBase(new Item.Properties()));
 
-    // -------------------------------------------BLOCKS-------------------------------------------
+    // ██████╗ ██╗      ██████╗  ██████╗██╗  ██╗███████╗
+    // ██╔══██╗██║     ██╔═══██╗██╔════╝██║ ██╔╝██╔════╝
+    // ██████╔╝██║     ██║   ██║██║     █████╔╝ ███████╗
+    // ██╔══██╗██║     ██║   ██║██║     ██╔═██╗ ╚════██║
+    // ██████╔╝███████╗╚██████╔╝╚██████╗██║  ██╗███████║
+    // ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝
 
-    // Ores
+    // -------------------------------------------ORES-------------------------------------------
     public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(2f).requiresCorrectToolForDrops(), UniformInt.of(2, 6)));
@@ -123,6 +133,12 @@ public class ModRegistry {
         ITEMS.register(eventBus);
     }
 
+    // ████████╗██╗   ██╗██████╗ ██╗███████╗██╗ ██████╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗
+    // ╚══██╔══╝╚██╗ ██╔╝██╔══██╗██║██╔════╝██║██╔════╝██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
+    //    ██║    ╚████╔╝ ██████╔╝██║█████╗  ██║██║     ███████║   ██║   ██║██║   ██║██╔██╗ ██║
+    //    ██║     ╚██╔╝  ██╔═══╝ ██║██╔══╝  ██║██║     ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║
+    //    ██║      ██║   ██║     ██║██║     ██║╚██████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║
+    //    ╚═╝      ╚═╝   ╚═╝     ╚═╝╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
     public static class SyringeBase extends Item {
         public SyringeBase(Properties properties) {
             super(properties);
