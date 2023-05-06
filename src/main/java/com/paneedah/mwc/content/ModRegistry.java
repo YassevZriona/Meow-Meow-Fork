@@ -26,13 +26,6 @@ public class ModRegistry {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ModernWarfare.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ModernWarfare.MODID);
 
-    // ██╗████████╗███████╗███╗   ███╗███████╗
-    // ██║╚══██╔══╝██╔════╝████╗ ████║██╔════╝
-    // ██║   ██║   █████╗  ██╔████╔██║███████╗
-    // ██║   ██║   ██╔══╝  ██║╚██╔╝██║╚════██║
-    // ██║   ██║   ███████╗██║ ╚═╝ ██║███████║
-    // ╚═╝   ╚═╝   ╚══════╝╚═╝     ╚═╝╚══════╝
-
     // -------------------------------------------INGOTS-------------------------------------------
     public static final RegistryObject<Item> GUNMETAL_INGOT = ITEMS.register("gunmetal_alloy", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LEAD_INGOT = ITEMS.register("lead_ingot", () -> new Item(new Item.Properties()));
@@ -84,13 +77,6 @@ public class ModRegistry {
     public static final RegistryObject<Item> STIMPAK = ITEMS.register("stimpak", () -> new SyringeBase(new Item.Properties()));
     public static final RegistryObject<Item> EMPTY_SYRINGE = ITEMS.register("empty_syringe", () -> new SyringeBase(new Item.Properties()));
 
-    // ██████╗ ██╗      ██████╗  ██████╗██╗  ██╗███████╗
-    // ██╔══██╗██║     ██╔═══██╗██╔════╝██║ ██╔╝██╔════╝
-    // ██████╔╝██║     ██║   ██║██║     █████╔╝ ███████╗
-    // ██╔══██╗██║     ██║   ██║██║     ██╔═██╗ ╚════██║
-    // ██████╔╝███████╗╚██████╔╝╚██████╗██║  ██╗███████║
-    // ╚═════╝ ╚══════╝ ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝
-
     // -------------------------------------------ORES-------------------------------------------
     public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
@@ -133,12 +119,6 @@ public class ModRegistry {
         ITEMS.register(eventBus);
     }
 
-    // ████████╗██╗   ██╗██████╗ ██╗███████╗██╗ ██████╗ █████╗ ████████╗██╗ ██████╗ ███╗   ██╗
-    // ╚══██╔══╝╚██╗ ██╔╝██╔══██╗██║██╔════╝██║██╔════╝██╔══██╗╚══██╔══╝██║██╔═══██╗████╗  ██║
-    //    ██║    ╚████╔╝ ██████╔╝██║█████╗  ██║██║     ███████║   ██║   ██║██║   ██║██╔██╗ ██║
-    //    ██║     ╚██╔╝  ██╔═══╝ ██║██╔══╝  ██║██║     ██╔══██║   ██║   ██║██║   ██║██║╚██╗██║
-    //    ██║      ██║   ██║     ██║██║     ██║╚██████╗██║  ██║   ██║   ██║╚██████╔╝██║ ╚████║
-    //    ╚═╝      ╚═╝   ╚═╝     ╚═╝╚═╝     ╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
     public static class SyringeBase extends Item {
         public SyringeBase(Properties properties) {
             super(properties);

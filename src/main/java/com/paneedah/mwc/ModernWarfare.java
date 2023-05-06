@@ -1,5 +1,6 @@
 package com.paneedah.mwc;
 
+import com.paneedah.mwc.content.ContentPackHandler;
 import com.paneedah.mwc.content.ModRegistry;
 import com.paneedah.mwc.content.CreativeTabsRegistry;
 import net.minecraftforge.common.MinecraftForge;
@@ -9,10 +10,17 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLPaths;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
+import java.io.File;
 
 @Mod(ModernWarfare.MODID)
 public class ModernWarfare {
+    public static File contentFolder;
     public static final String MODID = "mwc";
+    public static final Logger log = LogManager.getLogger(MODID);
 
     public ModernWarfare() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -96,6 +104,12 @@ public class ModernWarfare {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            contentFolder = new File(FMLPaths.GAMEDIR.get() + "/MWC");
+            if(!contentFolder.exists()) {
+                log.info("Content folder not found, creating new empty folder.");
+                contentFolder.mkdirs();
+            }
+            ContentPackHandler.loadContent();
         }
     }
 }
