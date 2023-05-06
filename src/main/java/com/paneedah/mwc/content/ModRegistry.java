@@ -81,7 +81,9 @@ public class ModRegistry {
 
     // -------------------------------------------BLOCKS-------------------------------------------
 
-    // Ores
+
+
+    // --------------------------------------------ORES--------------------------------------------
     public static final RegistryObject<Block> SULFUR_ORE = registerBlock("sulfur_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(2f).requiresCorrectToolForDrops(), UniformInt.of(2, 6)));
@@ -123,6 +125,8 @@ public class ModRegistry {
         ITEMS.register(eventBus);
     }
 
+
+    // -------------------------------------------ITEMS-------------------------------------------
     public static class SyringeBase extends Item {
         public SyringeBase(Properties properties) {
             super(properties);

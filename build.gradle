@@ -14,9 +14,7 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
-version = '0.0.1'
 group = 'com.paneedah.mwc'
-archivesBaseName = 'MWC'
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
