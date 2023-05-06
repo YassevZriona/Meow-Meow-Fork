@@ -14,28 +14,23 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
+version = '0.0.1'
 group = 'com.paneedah.mwc'
+archivesBaseName = 'MWC'
 
-java {
-    archivesBaseName = 'ModernWarfare'
-    toolchain.languageVersion = JavaLanguageVersion.of(17)
-}
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
+println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
     mappings channel: 'official', version: '1.19.4'
-
     runs {
         client {
             workingDirectory project.file('run')
-
             property 'forge.logging.markers', 'REGISTRIES'
-
-
             property 'forge.logging.console.level', 'debug'
             property 'forge.enabledGameTestNamespaces', 'mwc'
-            
             mods {
-                modernwarfare {
+                mwc {
                     source sourceSets.main
                 }
             }
@@ -43,15 +38,35 @@ minecraft {
 
         server {
             workingDirectory project.file('run')
-
             property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'mwc'
+            mods {
+                mwc {
+                    source sourceSets.main
+                }
+            }
+        }
+        gameTestServer {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'mwc'
+            mods {
+                mwc {
+                    source sourceSets.main
+                }
+            }
+        }
 
+        data {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-                        property 'forge.enabledGameTestNamespaces', 'mwc'
-            
+            args '--mod', 'mwc', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--client', '--server'
             mods {
-                modernwarfare {
+                mwc {
                     source sourceSets.main
                 }
             }
@@ -59,9 +74,15 @@ minecraft {
     }
 }
 
+sourceSets.main.resources { srcDir 'src/generated/resources' }
+
+repositories {
+    // Put repositories for dependencies here
+    // ForgeGradle automatically adds the Forge maven and Maven Central
+}
+
 mixin {
     add sourceSets.main, "mwc.refmap.json"
-
     config "mwc.mixins.json"
 }
 
@@ -69,8 +90,6 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.19.4-45.0.43'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
-
-jar.finalizedBy('reobfJar')
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation

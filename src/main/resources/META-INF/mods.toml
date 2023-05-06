@@ -5,11 +5,9 @@ license = "All Rights Reserved"
 modId = "mwc"
 version = "0.0.1"
 displayName = "Modern Warfare v2"
-authors = "Paneedah, Skyy, Desoroxxx, SticksDev"
+authors = "Paneedah, Skyy, Desoroxxx, SticksDev, Yassev"
 description = '''
-
-Modern Warfare Cubed - Modern Edition
-
+\nModern Warfare Cubed - Revamped Edition
 '''
 [[dependencies.mwc]]
 modId = "forge"
