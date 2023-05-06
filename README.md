@@ -1,2 +1,2 @@
-# Modern-Warfare-Cubed-v2
-Modern Warfare {Abstract} Edition
+# Modern-Warfare
+Modern Warfare 1.19.x | 1.20.x Edition
