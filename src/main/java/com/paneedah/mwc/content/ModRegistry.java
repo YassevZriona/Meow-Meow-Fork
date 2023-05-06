@@ -81,8 +81,8 @@ public class ModRegistry {
     public static final RegistryObject<Item> SYNTHETIC_POLYMER_COMPOSITE = ITEMS.register("synthetic_polymer_composite", () -> new Item(new Item.Properties()));
 
     // -------------------------------------------TOOLS-------------------------------------------
-    public static final RegistryObject<Item> STIMPAK = ITEMS.register("stimpak", () -> new ModRegistry.SyringeBase(new Item.Properties()));
-    public static final RegistryObject<Item> EMPTY_SYRINGE = ITEMS.register("empty_syringe", () -> new ModRegistry.SyringeBase(new Item.Properties()));
+    public static final RegistryObject<Item> STIMPAK = ITEMS.register("stimpak", () -> new SyringeBase(new Item.Properties()));
+    public static final RegistryObject<Item> EMPTY_SYRINGE = ITEMS.register("empty_syringe", () -> new SyringeBase(new Item.Properties()));
 
     // ██████╗ ██╗      ██████╗  ██████╗██╗  ██╗███████╗
     // ██╔══██╗██║     ██╔═══██╗██╔════╝██║ ██╔╝██╔════╝
