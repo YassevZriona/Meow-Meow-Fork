@@ -1,12 +1,14 @@
 {
-	"parent": "builtin/generated",
+	"parent": "minecraft:item/generated",
 	"gui_light": "front",
 	"display": {
 		"thirdperson_righthand": {
+			"rotation": [0, 0, -13],
 			"translation": [-0.75, 2, 0],
 			"scale": [0.42, 0.41, 0.39]
 		},
 		"thirdperson_lefthand": {
+			"rotation": [0, 0, -13],
 			"translation": [-0.75, 2, 0],
 			"scale": [0.42, 0.41, 0.39]
 		},

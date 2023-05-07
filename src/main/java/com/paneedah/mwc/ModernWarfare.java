@@ -17,9 +17,11 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import java.io.File;
+import java.util.HashMap;
 
 @Mod(ModernWarfare.MODID)
 public class ModernWarfare {
+    public static HashMap<String, File> packs = new HashMap<String, File>();
     public static File contentFolder;
     public static final String MODID = "mwc";
     public static final Logger log = LogManager.getLogger(MODID);
