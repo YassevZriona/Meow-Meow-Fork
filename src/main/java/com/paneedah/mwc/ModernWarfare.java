@@ -1,8 +1,10 @@
 package com.paneedah.mwc;
 
+import com.paneedah.mwc.client.ClientProxy;
+import com.paneedah.mwc.common.CommonProxy;
 import com.paneedah.mwc.content.ContentPackHandler;
-import com.paneedah.mwc.content.ModRegistry;
-import com.paneedah.mwc.content.CreativeTabsRegistry;
+import com.paneedah.mwc.client.ModRegistry;
+import com.paneedah.mwc.client.CreativeTabsRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -31,6 +33,8 @@ public class ModernWarfare {
         ModRegistry.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
     }
+
+    public static CommonProxy proxy = new ClientProxy();
 
     private void commonSetup(FMLClientSetupEvent event) {
     }

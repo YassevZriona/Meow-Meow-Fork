@@ -1,7 +1,7 @@
 package com.paneedah.mwc.datahandling;
 
 import com.paneedah.mwc.ModernWarfare;
-import com.paneedah.mwc.content.ModRegistry;
+import com.paneedah.mwc.client.ModRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;

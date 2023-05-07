@@ -1,15 +1,12 @@
 package com.paneedah.mwc.datahandling;
 import com.paneedah.mwc.ModernWarfare;
-import com.paneedah.mwc.content.ModRegistry;
+import com.paneedah.mwc.client.ModRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.material.Material;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.minecraftforge.registries.RegistryObject;
 

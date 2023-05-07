@@ -1,7 +1,7 @@
 package com.paneedah.mwc.datahandling;
 
 import com.paneedah.mwc.ModernWarfare;
-import com.paneedah.mwc.content.ModRegistry;
+import com.paneedah.mwc.client.ModRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;

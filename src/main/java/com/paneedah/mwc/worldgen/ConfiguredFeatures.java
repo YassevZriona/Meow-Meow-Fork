@@ -1,7 +1,7 @@
 package com.paneedah.mwc.worldgen;
 
 import com.paneedah.mwc.ModernWarfare;
-import com.paneedah.mwc.content.ModRegistry;
+import com.paneedah.mwc.client.ModRegistry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
