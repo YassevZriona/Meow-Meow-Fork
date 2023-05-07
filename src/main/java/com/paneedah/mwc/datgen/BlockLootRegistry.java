@@ -1,4 +1,4 @@
-package com.paneedah.mwc.datahandling;
+package com.paneedah.mwc.datgen;
 
 import com.paneedah.mwc.client.ModRegistry;
 import net.minecraft.data.loot.BlockLootSubProvider;

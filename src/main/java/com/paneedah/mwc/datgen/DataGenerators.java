@@ -1,4 +1,4 @@
-package com.paneedah.mwc.datahandling;
+package com.paneedah.mwc.datgen;
 
 import com.paneedah.mwc.ModernWarfare;
 import net.minecraft.data.DataGenerator;

@@ -1,4 +1,4 @@
-package com.paneedah.mwc.datahandling;
+package com.paneedah.mwc.datgen;
 
 import com.paneedah.mwc.ModernWarfare;
 import com.paneedah.mwc.client.ModRegistry;
@@ -70,6 +70,8 @@ public class ItemModelGen extends ItemModelProvider {
     }
 
     private ItemModelBuilder includeItem(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated")).texture("layer0",new ResourceLocation(ModernWarfare.MODID,"item/"+ item.getId().getPath()));
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(ModernWarfare.MODID,"item/"+ item.getId().getPath()));
     }
 }

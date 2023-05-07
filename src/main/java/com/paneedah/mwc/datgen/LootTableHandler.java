@@ -1,4 +1,4 @@
-package com.paneedah.mwc.datahandling;
+package com.paneedah.mwc.datgen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.LootTableProvider;
