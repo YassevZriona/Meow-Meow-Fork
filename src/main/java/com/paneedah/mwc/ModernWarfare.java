@@ -1,36 +1,47 @@
 package com.paneedah.mwc;
 
+import com.paneedah.mwc.client.ClientConfig;
 import com.paneedah.mwc.client.ClientProxy;
+import com.paneedah.mwc.common.CommonConfig;
 import com.paneedah.mwc.common.CommonProxy;
 import com.paneedah.mwc.content.ContentPackHandler;
 import com.paneedah.mwc.client.ModRegistry;
-import com.paneedah.mwc.client.CreativeTabsRegistry;
+import com.paneedah.mwc.client.CTRegistry;
+import com.paneedah.mwc.content.types.PackFile;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
+import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import java.io.File;
-import java.util.HashMap;
+import java.io.*;
+import java.util.*;
 
-@Mod(ModernWarfare.MODID)
+@Mod(ModernWarfare.MOD_ID)
 public class ModernWarfare {
-    public static HashMap<String, File> packs = new HashMap<String, File>();
-    public static File contentFolder;
-    public static final String MODID = "mwc";
-    public static final Logger log = LogManager.getLogger(MODID);
+    public static HashMap<String, PackFile> packs = new HashMap<String, PackFile>();
+    public static PackFile contentFolder;
+    public static File logFile;
+    public static final String MOD_ID = "mwc";
+    public static final Logger logger = LogManager.getLogger("MWC");
 
     public ModernWarfare() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreative);
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC, "mwc-client.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC, "mwc-common.toml");
 
         ModRegistry.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
@@ -39,10 +50,43 @@ public class ModernWarfare {
     public static CommonProxy proxy = new ClientProxy();
 
     private void commonSetup(FMLClientSetupEvent event) {
+        contentFolder = new PackFile(FMLPaths.GAMEDIR.get() + "/MWC");
+        if(contentFolder.mkdirs()) logger.info("Content folder not found, creating new empty folder.");
+
+        if(CommonConfig.LOAD_DEFAULT_CP.get()) {
+            logger.info("Downloading/Installing default content pack.");
+
+            InputStream inputStream = getClass().getResourceAsStream("MWC.jar");
+            File mwc = new File("MWC.jar");
+
+            try {
+                OutputStream outputStream = new FileOutputStream(mwc);
+                IOUtils.copy(Objects.requireNonNull(inputStream, "NullPointer when making input stream of default content pack."), outputStream);
+                outputStream.close();
+                if (!mwc.exists()) {
+                    try {
+                        logger.log(Level.INFO, "Copying files to the world...");
+                        FileUtils.copyDirectory(mwc, contentFolder);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        logger.log(Level.ERROR, "There was an error during copy, the content pack could not be found.");
+                    }
+                }
+            } catch (Exception e) {
+                logger.error("An error occurred when loading default content pack.");
+                logger.throwing(e);
+            }
+            CommonConfig.LOAD_DEFAULT_CP.set(false);
+        }
+
+        logFile = new File(FMLPaths.GAMEDIR.get().toString(), "log.txt");
+        if(logFile.mkdirs()) logger.info("Log file not found, creating new one.");
+
+        ContentPackHandler.loadContent();
     }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
-        if(event.getTab() == CreativeTabsRegistry.BaseTab) {
+        if(event.getTab() == CTRegistry.BaseTab) {
             // INGOTS
             event.accept(ModRegistry.GUNMETAL_INGOT);
             event.accept(ModRegistry.STEEL_INGOT);
@@ -103,19 +147,6 @@ public class ModernWarfare {
             event.accept(ModRegistry.TITANIUM_ORE);
             event.accept(ModRegistry.URANIUM_ORE);
             event.accept(ModRegistry.TUNGSTEN_ORE);
-        }
-    }
-
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            contentFolder = new File(FMLPaths.GAMEDIR.get() + "/MWC");
-            if(!contentFolder.exists()) {
-                log.info("Content folder not found, creating new empty folder.");
-                contentFolder.mkdirs();
-            }
-            ContentPackHandler.loadContent();
         }
     }
 }

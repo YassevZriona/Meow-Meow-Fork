@@ -48,7 +48,7 @@ public class PlacedFeatures {
 
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(ModernWarfare.MODID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(ModernWarfare.MOD_ID, name));
     }
 
     private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {
