@@ -1,4 +1,4 @@
-package com.paneedah.mwc.datgen;
+package com.paneedah.mwc.data.generators;
 
 import com.paneedah.mwc.client.ModRegistry;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -8,8 +8,8 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Set;
 
-public class BlockLootRegistry extends BlockLootSubProvider {
-    public BlockLootRegistry() {
+public class BlockLootGen extends BlockLootSubProvider {
+    public BlockLootGen() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());
     }
 

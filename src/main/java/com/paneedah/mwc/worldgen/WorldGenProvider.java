@@ -16,6 +16,6 @@ public class WorldGenProvider extends DatapackBuiltinEntriesProvider {
             .add(Registries.PLACED_FEATURE, PlacedFeatures::bootstrap);
 
     public WorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, builder, Set.of(ModernWarfare.MODID));
+        super(output, registries, builder, Set.of(ModernWarfare.MOD_ID));
     }
 }

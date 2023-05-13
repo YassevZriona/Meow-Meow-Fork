@@ -1,4 +1,4 @@
-package com.paneedah.mwc.datgen;
+package com.paneedah.mwc.data.generators;
 
 import com.paneedah.mwc.ModernWarfare;
 import com.paneedah.mwc.client.ModRegistry;
@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ItemModelGen extends ItemModelProvider {
     public ItemModelGen(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, ModernWarfare.MODID, existingFileHelper);
+        super(output, ModernWarfare.MOD_ID, existingFileHelper);
     }
 
     @Override
@@ -72,6 +72,6 @@ public class ItemModelGen extends ItemModelProvider {
     private ItemModelBuilder includeItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(ModernWarfare.MODID,"item/"+ item.getId().getPath()));
+                new ResourceLocation(ModernWarfare.MOD_ID,"item/"+ item.getId().getPath()));
     }
 }

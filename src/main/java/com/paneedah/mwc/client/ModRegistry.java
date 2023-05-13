@@ -19,12 +19,14 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.ArrayList;
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = ModernWarfare.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = ModernWarfare.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModRegistry {
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ModernWarfare.MODID);
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ModernWarfare.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ModernWarfare.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ModernWarfare.MOD_ID);
+    public static ArrayList<RegistryObject<Item>> items = new ArrayList<RegistryObject<Item>>();
 
     // -------------------------------------------INGOTS-------------------------------------------
     public static final RegistryObject<Item> GUNMETAL_INGOT = ITEMS.register("gunmetal_alloy", () -> new Item(new Item.Properties()));
