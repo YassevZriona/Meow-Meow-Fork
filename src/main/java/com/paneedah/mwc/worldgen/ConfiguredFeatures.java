@@ -46,19 +46,19 @@ public class ConfiguredFeatures {
         List<OreConfiguration.TargetBlockState> sulfurOre = List.of(OreConfiguration.target(stoneReplaceables, ModRegistry.SULFUR_ORE.get().defaultBlockState()),
                 OreConfiguration.target(deepslateReplaceables, ModRegistry.SULFUR_ORE.get().defaultBlockState()));
 
-        register(context, ALUMINUM_ORE, Feature.ORE, new OreConfiguration(aluminumOre, 11));
-        register(context, LEAD_ORE, Feature.ORE, new OreConfiguration(leadOre, 16));
-        register(context, TITANIUM_ORE, Feature.ORE, new OreConfiguration(titaniumOre, 19));
-        register(context, TUNGSTEN_ORE, Feature.ORE, new OreConfiguration(tungstenOre, 17));
-        register(context, URANIUM_ORE, Feature.ORE, new OreConfiguration(uraniumOre, 7));
-        register(context, GRAPHITE_ORE, Feature.ORE, new OreConfiguration(graphiteOre, 13));
-        register(context, SULFUR_ORE, Feature.ORE, new OreConfiguration(sulfurOre, 15));
-        register(context, NITER_ORE, Feature.ORE, new OreConfiguration(niterOre, 9));
+        register(context, ALUMINUM_ORE, Feature.ORE, new OreConfiguration(aluminumOre, 8));
+        register(context, LEAD_ORE, Feature.ORE, new OreConfiguration(leadOre, 6));
+        register(context, TITANIUM_ORE, Feature.ORE, new OreConfiguration(titaniumOre, 4));
+        register(context, TUNGSTEN_ORE, Feature.ORE, new OreConfiguration(tungstenOre, 3));
+        register(context, URANIUM_ORE, Feature.ORE, new OreConfiguration(uraniumOre, 5));
+        register(context, GRAPHITE_ORE, Feature.ORE, new OreConfiguration(graphiteOre, 6));
+        register(context, SULFUR_ORE, Feature.ORE, new OreConfiguration(sulfurOre, 5));
+        register(context, NITER_ORE, Feature.ORE, new OreConfiguration(niterOre, 7));
     }
 
 
     public static ResourceKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(ModernWarfare.MODID, name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(ModernWarfare.MOD_ID, name));
     }
 
     private static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {

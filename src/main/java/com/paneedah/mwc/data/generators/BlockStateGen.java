@@ -1,4 +1,4 @@
-package com.paneedah.mwc.datgen;
+package com.paneedah.mwc.data.generators;
 
 import com.paneedah.mwc.ModernWarfare;
 import com.paneedah.mwc.client.ModRegistry;
@@ -10,7 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class BlockStateGen extends BlockStateProvider {
     public BlockStateGen(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, ModernWarfare.MODID, exFileHelper);
+        super(output, ModernWarfare.MOD_ID, exFileHelper);
     }
 
     @Override

@@ -9,13 +9,13 @@ import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = ModernWarfare.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class CreativeTabsRegistry {
+@Mod.EventBusSubscriber(modid = ModernWarfare.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class CTRegistry {
 
     public static CreativeModeTab BaseTab;
     @SubscribeEvent
     public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event) {
-        BaseTab = event.registerCreativeModeTab(new ResourceLocation(ModernWarfare.MODID, "basetab"), builder -> {
+        BaseTab = event.registerCreativeModeTab(new ResourceLocation(ModernWarfare.MOD_ID, "basetab"), builder -> {
             builder.title(Component.translatable("itemGroup.mwc.basetab"))
                     .icon(() -> new ItemStack(ModRegistry.GUNMETAL_INGOT.get()));
             builder.withSearchBar();
